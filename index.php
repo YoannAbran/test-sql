@@ -87,6 +87,8 @@
 //   echo "Record deleted successfully";
 //
 //   $conn = null;
+
+
 //7. Afficher  le nombre de femmes et d'hommes et leurs  moyennes d’âge
 
 ///remplace les / par des -
@@ -96,17 +98,17 @@
 ///modifie le dateformat pour convertir birth_date varchar->DATE
 //UPDATE `table 1` SET `birth_date`= DATE_FORMAT(str_to_date( birth_date, '%d-%m-%Y'),'%Y-%m-%d');
 
-///convertit en DateTime
-//SELECT CONVERT(birth_date, DATE)
-// FROM `table 1`
+///convertit en Date
+//UPDATE `table 1`
+// SET CONVERT(birth_date, DATE)
+
 
 $avg = "SELECT gender, YEAR(NOW())-AVG(YEAR(birth_date)) as avg, COUNT(gender) as count FROM `table 1` GROUP BY gender";
 foreach ($conn -> query($avg) as $row) {
 echo  $row['count'].'&nbsp'.$row['gender'] .'&nbsp'. $row['avg'] ."<br>";
 }
 
-// SELECT birth_date, REPLACE(birth_date, '/', '-')
-// FROM `table 1`
+
      ?>
   </body>
 </html>
